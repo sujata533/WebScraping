@@ -1,0 +1,26 @@
+import requests # import this library
+wiki_link='https://en.wikipedia.org/wiki/list_of_asian_countries_by_area'
+link=requests.get(wiki_link).text
+print(link)
+
+from bs4 import BeautifulSoup # import this library for parsing the files
+soup=BeautifulSoup(link,'lxml')
+soup
+
+print(soup.prettify()) #improve the format
+
+soup.title #print the title
+
+soup.title.string #print the title with out html tags
+
+soup.a #print the a tags 
+
+
+soup.find_all('a') #print the all a tags
+
+all_link=soup.find_all('a')
+for link in all_link:
+    print(link.get('href'))
+    
+    all_tables=soup.find_all('table')
+print(all_tables)
